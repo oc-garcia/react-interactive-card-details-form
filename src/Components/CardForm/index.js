@@ -25,23 +25,23 @@ export default function CardForm() {
         <form className={styles.form}>
           <label htmlFor="form__name">Cardholder Name</label>
           <input type="text" id="form__name" placeholder="e.g. Jane Appleseed" />
-          <span></span>
+          <span>error</span>
           <label htmlFor="form__number">Card Number</label>
           <input type="number" id="form__number" placeholder="e.g. 1234 5678 9123 0000" />
-          <span></span>
-          <div>
+          <span>error</span>
+          <div className={styles.formSubContainer}>
             <div>
               <label>Exp. Date (MM/YY)</label>
               <div>
                 <input type="number" placeholder="MM" />
                 <input type="number" placeholder="YY" />
               </div>
-              <span></span>
+              <span>error</span>
             </div>
-            <div>
+            <div className={styles.cvcContainer}>
               <label htmlFor="form__cvc">CVC</label>
               <input type="number" id="form__cvc" placeholder="e.g. 123" />
-              <span></span>
+              <span>error</span>
             </div>
           </div>
           <button>Confirm</button>
