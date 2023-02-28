@@ -1,4 +1,4 @@
-import styles from "./CardForm.module.sass";
+import styles from "./CardForm.module.css";
 
 import React from "react";
 import { ReactComponent as CardLogo } from "../../Assets/card-logo.svg";
