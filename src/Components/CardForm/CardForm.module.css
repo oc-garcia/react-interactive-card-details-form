@@ -71,13 +71,33 @@
   color: var(--Very-dark-violet);
 }
 
-.form input {
+.inputOk {
   padding: 0.3rem;
   margin: 0.5rem 0 0.2rem 0;
+  border-radius: 5px;
+  border: 1px solid var(--Dark-grayish-violet);
+}
+
+.inputOk:focus {
+  border: 1px solid;
+  border-image: var(--Linear-gradient);
+  outline: none;
 }
 
 .form input::placeholder {
   color: var(--Dark-grayish-violet);
+}
+
+.inputError {
+  padding: 0.3rem;
+  margin: 0.5rem 0 0.2rem 0;
+  border-radius: 5px;
+  border: 1px solid var(--Red);
+}
+
+.inputError:focus {
+  border: 1px solid var(--Red);
+  outline: none;
 }
 
 .form span {
@@ -110,4 +130,5 @@ button {
   color: var(--White);
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
