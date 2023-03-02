@@ -132,3 +132,39 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 1000px) {
+  .formContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardSection {
+    background-image: url(../../Assets/bg-main-mobile.png);
+    background-size: 100% 80%;
+    position: relative;
+    width: 100vw;
+    height: 30vh;
+    padding: 1rem;
+  }
+
+  .cardFront {
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    width: 15rem;
+  }
+
+  .cardBack {
+    margin: 0;
+    position: absolute;
+    top: 4rem;
+    left: 3rem;
+    width: 15rem;
+  }
+
+  .cardBack p {
+    left: 10.5rem;
+    top: 3.4rem;
+  }
+}
