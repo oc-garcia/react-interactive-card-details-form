@@ -95,7 +95,7 @@ export default function CardForm() {
                   pattern: { value: /^[0-9]{3,4}$/, message: "Incorrect format" },
                 })}
               />
-              <span>{errors.cvc?.message}</span>
+                <span>{errors.cvc?.message}</span>
             </div>
           </div>
           <button>Confirm</button>
