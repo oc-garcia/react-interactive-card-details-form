@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 export default function CardForm() {
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -15,20 +16,32 @@ export default function CardForm() {
     console.log("Submited");
   };
 
+  /*
+  const creditCardInput = () => {
+    watch("creditcard")
+      .map((d, i) => (i % 4 === 0 ? " " + d : d))
+      .join("")
+      .trim();
+  };
+    console.log(creditCardInput);
+  */
+
   return (
     <main className={styles.formContainer}>
       <section className={styles.cardSection}>
         <div>
           <div className={styles.cardFront}>
             <img src={CardLogo} alt="Card logo" className={styles.cardLogo} />
-            <p>4591 6489 6389 101E</p>
+            <p>{watch("creditcard") !== undefined ? watch("creditcard") : "0000 0000 0000 0000"}</p>
             <div>
-              <p>Felicia Leire</p>
-              <p>09/00</p>
+              <p>{watch("name") !== undefined ? watch("name") : "Jane Appleseed"}</p>
+              <p>
+                {watch("month") !== undefined ? watch("month") : "09"}/{watch("year") !== undefined ? watch("year") : "24"}
+              </p>
             </div>
           </div>
           <div className={styles.cardBack}>
-            <p>000</p>
+            <p>{watch("cvc") !== undefined ? watch("cvc") : "000"}</p>
           </div>
         </div>
       </section>
@@ -95,7 +108,7 @@ export default function CardForm() {
                   pattern: { value: /^[0-9]{3,4}$/, message: "Incorrect format" },
                 })}
               />
-                <span>{errors.cvc?.message}</span>
+              <span>{errors.cvc?.message}</span>
             </div>
           </div>
           <button>Confirm</button>
