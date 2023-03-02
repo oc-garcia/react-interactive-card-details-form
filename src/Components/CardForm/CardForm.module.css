@@ -119,6 +119,10 @@
   flex-direction: column;
 }
 
+.cvcContainer input {
+  width: 100%;
+}
+
 .cvcContainer span {
   margin-top: 0.4rem;
 }
@@ -186,20 +190,19 @@ button {
   }
 
   .formSubContainer input {
-  width: 100%;
-  margin-right: 0.5rem;
-}
+    width: 100%;
+    margin-right: 0.5rem;
+  }
 
-.cardLogo{
-  width: 3rem;
-}
+  .cardLogo {
+    width: 3rem;
+  }
 
-.cardFront p {
-  margin-top: 0.5rem;
-}
+  .cardFront p {
+    margin-top: 0.5rem;
+  }
 
-.form span {
-  font-size: x-small;
-}
-
+  .form span {
+    font-size: x-small;
+  }
 }
