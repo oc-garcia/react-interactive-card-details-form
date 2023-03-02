@@ -1,7 +1,7 @@
 import styles from "./CardForm.module.css";
 
 import React from "react";
-import { ReactComponent as CardLogo } from "../../Assets/card-logo.svg";
+import CardLogo from "../../Assets/card-logo.svg";
 import { useForm } from "react-hook-form";
 
 export default function CardForm() {
@@ -20,7 +20,7 @@ export default function CardForm() {
       <section className={styles.cardSection}>
         <div>
           <div className={styles.cardFront}>
-            <CardLogo />
+            <img src={CardLogo} alt="Card logo" className={styles.cardLogo} />
             <p>4591 6489 6389 101E</p>
             <div>
               <p>Felicia Leire</p>
