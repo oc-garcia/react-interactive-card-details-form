@@ -12,7 +12,7 @@ export default function CardForm() {
     formState: { errors },
   } = useForm();
 
-  let [submitted, setSubmitted] = useState(true);
+  let [submitted, setSubmitted] = useState(false);
 
   const onSubmit = () => {
     setSubmitted(true);
