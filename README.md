@@ -55,4 +55,7 @@ Contributions are welcome! If you find a bug or have a feature request, please c
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Project Image
+![](./public/Design/Screenshot%20from%202023-03-09%2016-49-47.png#vitrinedev)
+
 
