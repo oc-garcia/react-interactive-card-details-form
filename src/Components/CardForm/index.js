@@ -1,13 +1,12 @@
 import styles from "./CardForm.module.css";
 
-import React from "react";
+import React, { useState } from "react";
 import CardLogo from "../../Assets/card-logo.svg";
 import { useForm } from "react-hook-form";
 
 export default function CardForm() {
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -16,15 +15,15 @@ export default function CardForm() {
     console.log("Submited");
   };
 
-  /*
-  const creditCardInput = () => {
-    watch("creditcard")
-      .map((d, i) => (i % 4 === 0 ? " " + d : d))
-      .join("")
-      .trim();
-  };
-    console.log(creditCardInput);
-  */
+  const [inputText, setText] = useState({
+    name: "",
+    number: "",
+    month: "",
+    year: "",
+    cvc: "",
+  });
+
+  //.map((d, i) => (i % 4 === 0 ? " " + d : d)).join("").trim()
 
   return (
     <main className={styles.formContainer}>
@@ -32,16 +31,17 @@ export default function CardForm() {
         <div>
           <div className={styles.cardFront}>
             <img src={CardLogo} alt="Card logo" className={styles.cardLogo} />
-            <p>{watch("creditcard") !== undefined ? watch("creditcard") : "0000 0000 0000 0000"}</p>
+            <p>{inputText.number !== "" ? inputText.number : "0000 0000 0000 0000"}</p>
             <div>
-              <p>{watch("name") !== undefined ? watch("name") : "Jane Appleseed"}</p>
+              <p>{inputText.name !== "" ? inputText.name : "Jane Appleseed"}</p>
               <p>
-                {watch("month") !== undefined ? watch("month") : "09"}/{watch("year") !== undefined ? watch("year") : "24"}
+                {inputText.month !== "" ? inputText.month.slice(0, 2) : "09"}/
+                {inputText.year !== "" ? inputText.year.slice(0, 2) : "24"}
               </p>
             </div>
           </div>
           <div className={styles.cardBack}>
-            <p>{watch("cvc") !== undefined ? watch("cvc") : "000"}</p>
+            <p>{inputText.cvc !== "" ? inputText.cvc.slice(0, 3) : "000"}</p>
           </div>
         </div>
       </section>
@@ -53,6 +53,12 @@ export default function CardForm() {
             placeholder="e.g. Jane Appleseed"
             className={errors.name ? styles.inputError : styles.inputOk}
             {...register("name", { required: "Can't be blank" })}
+            onChange={(e) => {
+              setText({
+                ...inputText,
+                name: e.target.value,
+              });
+            }}
           />
           <span>{errors.name?.message}</span>
           <label htmlFor="form__number">Card Number</label>
@@ -66,6 +72,12 @@ export default function CardForm() {
               maxLength: { value: 16, message: "Too long for a Credit Card" },
               minLength: { value: 16, message: "Too short for a Credit Card" },
             })}
+            onChange={(e) => {
+              setText({
+                ...inputText,
+                number: e.target.value,
+              });
+            }}
           />
           <span>{errors.creditcard?.message}</span>
           <div className={styles.formSubContainer}>
@@ -81,6 +93,12 @@ export default function CardForm() {
                     max: { value: 12, message: "Check month input" },
                     pattern: { value: /^[0-9]/i, message: "Wrong format, numbers only" },
                   })}
+                  onChange={(e) => {
+                    setText({
+                      ...inputText,
+                      month: e.target.value,
+                    });
+                  }}
                 />
                 <input
                   type="number"
@@ -91,6 +109,12 @@ export default function CardForm() {
                     min: { value: 23, message: "Expired credit card" },
                     pattern: { value: /^[0-9]/i, message: "Wrong format, numbers only" },
                   })}
+                  onChange={(e) => {
+                    setText({
+                      ...inputText,
+                      year: e.target.value,
+                    });
+                  }}
                 />
               </div>
               <span>
@@ -107,6 +131,12 @@ export default function CardForm() {
                   required: "Can't be blank",
                   pattern: { value: /^[0-9]{3,4}$/, message: "Incorrect format" },
                 })}
+                onChange={(e) => {
+                  setText({
+                    ...inputText,
+                    cvc: e.target.value,
+                  });
+                }}
               />
               <span>{errors.cvc?.message}</span>
             </div>
