@@ -23,15 +23,22 @@ export default function CardForm() {
     cvc: "",
   });
 
-  //.map((d, i) => (i % 4 === 0 ? " " + d : d)).join("").trim()
-
   return (
     <main className={styles.formContainer}>
       <section className={styles.cardSection}>
         <div>
           <div className={styles.cardFront}>
             <img src={CardLogo} alt="Card logo" className={styles.cardLogo} />
-            <p>{inputText.number !== "" ? inputText.number : "0000 0000 0000 0000"}</p>
+            <p>
+              {inputText.number !== ""
+                ? inputText.number
+                    .split("")
+                    .map((d, i) => (i % 4 === 0 ? " " + d : d))
+                    .join("")
+                    .trim()
+                    .slice(0, 19)
+                : "0000 0000 0000 0000"}
+            </p>
             <div>
               <p>{inputText.name !== "" ? inputText.name : "Jane Appleseed"}</p>
               <p>
