@@ -3,6 +3,7 @@ import styles from "./CardForm.module.css";
 import React, { useState } from "react";
 import CardLogo from "../../Assets/card-logo.svg";
 import { useForm } from "react-hook-form";
+import SubmittedSection from "./SubmittedSection";
 
 export default function CardForm() {
   const {
@@ -11,8 +12,10 @@ export default function CardForm() {
     formState: { errors },
   } = useForm();
 
+  let [submitted, setSubmitted] = useState(true);
+
   const onSubmit = () => {
-    console.log("Submited");
+    setSubmitted(true);
   };
 
   const [inputText, setText] = useState({
@@ -52,7 +55,7 @@ export default function CardForm() {
           </div>
         </div>
       </section>
-      <section className={styles.formSection}>
+      { submitted === false ? <section className={styles.formSection}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="form__name">Cardholder Name</label>
           <input
@@ -150,7 +153,9 @@ export default function CardForm() {
           </div>
           <button>Confirm</button>
         </form>
-      </section>
+      </section> 
+      : 
+      <SubmittedSection /> }
     </main>
   );
 }
